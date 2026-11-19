@@ -214,6 +214,23 @@ productGroup.rotation.set(0.35, -0.4, 0);
 const hudLabel = document.getElementById('hud-stage-label');
 const isDesktop = () => window.innerWidth >= 1024;
 
+// Keep the portrait visually tied to the same scroll progression as the 3D core.
+const profilePhoto = document.querySelector('.profile-photo');
+if (profilePhoto) {
+    gsap.to(profilePhoto, {
+        y: -55,
+        scale: 0.92,
+        opacity: 0.35,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+        }
+    });
+}
+
 // Master timeline scrubbed by page scroll
 const masterTl = gsap.timeline({
     scrollTrigger: {
